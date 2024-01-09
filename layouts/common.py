@@ -72,3 +72,86 @@ def generate_drive_text(how, where):
             ),
         ]
     )
+
+def generate_drive_text_translation(how, where):
+    return html.Div(
+        [
+            dbc.Card(
+                dbc.CardBody(html.H4(id="generate-drive-text1")), class_name="main-info"
+            ),
+            dbc.Card(
+                dbc.CardBody([html.H5(id="generate-drive-text2"), html.P(id="HOW")]),
+                class_name="supp-info",
+            ),
+            dbc.Card(
+                dbc.CardBody(
+                    [html.H5(id="generate-drive-text3"), html.P(id="WHERE")]
+                ),
+                class_name="supp-info",
+            ),
+            dbc.Card(
+                dbc.CardBody(
+                    [
+                        html.H5(id="generate-drive-text4"),
+                        html.Span(id="generate-drive-text5"),
+                        html.Ul(
+                            [
+                                html.Li(
+                                    [
+                                        html.B("UNSUBMITTED"),
+                                        html.Span(" - Pendiente en el cliente.", id="generate-drive-text6"),
+                                    ]
+                                ),
+                                html.Li(
+                                    [
+                                        html.B("READY"),
+                                        html.Span(" - En cola en el servidor.", id="generate-drive-text7"),
+                                    ]
+                                ),
+                                html.Li(
+                                    [
+                                        html.B("RUNNING"),
+                                        html.Span(" - En ejecución.", id="generate-drive-text8"),
+                                    ]
+                                ),
+                                html.Li(
+                                    [
+                                        html.B("COMPLETED"),
+                                        html.Span(" - Completada exitosamente.", id="generate-drive-text9"),
+                                    ]
+                                ),
+                                html.Li(
+                                    [
+                                        html.B("FAILED"),
+                                        html.Span(" - No completada debido a un error.", id="generate-drive-text10"),
+                                    ]
+                                ),
+                                html.Li(
+                                    [
+                                        html.B("CANCEL_REQUESTED"),
+                                        html.Span(" - En ejecución pero se ha solicitado su cancelación.", id="generate-drive-text11"),
+                                    ]
+                                ),
+                                html.Li(
+                                    [
+                                        html.B("CANCELED"),
+                                        html.Span(" - Cancelada.", id="generate-drive-text12"),
+                                    ]
+                                ),
+                            ]
+                        ),  
+                    ]
+                ), 
+                class_name="supp-info",
+            ),
+            dbc.Card(
+                dbc.CardBody(
+                    [
+                        html.H5(id="generate-drive-text13"),
+                        html.Span(id="generate-drive-text14"),
+                    ]
+                ),
+                class_name="supp-info",
+            ),
+        ]
+    )
