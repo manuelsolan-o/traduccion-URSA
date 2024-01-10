@@ -1046,7 +1046,7 @@ layout = html.Div(
 )
 
 @callback(
-    [Output(key, 'children') for key in translations.keys()],
+    [Output(key, 'children') for key in translations.keys(), allow_duplicate=True],
     [Input('btn-lang-es', 'n_clicks'),
      Input('btn-lang-en', 'n_clicks'),
      Input('btn-lang-pt', 'n_clicks')]
