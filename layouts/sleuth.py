@@ -142,6 +142,13 @@ def get_parameters_des(parameters):
 def help_text(main, help):
     return [main, html.Sup(html.Abbr("\u003F", title=help))]
 
+def help_text_translation(main_text_id, defecto, help_id):
+    return [
+        html.Span(id=main_text_id),
+        html.Sup(html.Abbr("\u003F", title=defecto, id=help_id))
+    ]
+
+
 
 def create_parameter_row(idx, parameters):
     cols = []
