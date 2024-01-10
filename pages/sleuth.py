@@ -26,6 +26,614 @@ from rasterio.enums import Resampling
 from shapely.geometry import shape
 from sleuth_sklearn.estimator import SLEUTH
 
+translations = {
+    
+    # Pestaña rasters
+    
+    ## Slope
+    
+    "rasters-text1-slope": {
+    "es": "Descargar raster original (Pendiente)",
+    "en": "Download Original Raster (Slope)",
+    "pt": "Baixar Raster Original (Inclinação)"
+    },
+    "rasters-text2-slope": {
+        "es": "Descargar raster actual (Pendiente)",
+        "en": "Download Current Raster (Slope)",
+        "pt": "Baixar Raster Atual (Inclinação)"
+    },
+    "rasters-text3-slope": {
+        "es": "Restaurar raster original (Pendiente)",
+        "en": "Restore Original Raster (Slope)",
+        "pt": "Restaurar Raster Original (Inclinação)"
+    },
+    "rasters-text4-slope": {
+        "es": "Subir raster personalizado (Pendiente):",
+        "en": "Upload Custom Raster (Slope):",
+        "pt": "Carregar Raster Personalizado (Inclinação):"
+    },
+    "rasters-text5-slope": {
+        "es": "Arrastre o (Pendiente)",
+        "en": "Drag or (Slope)",
+        "pt": "Arraste ou (Inclinação)"
+    },
+    "rasters-text6-slope": {
+        "es": "seleccione archivos (Pendiente)",
+        "en": "select files (Slope)",
+        "pt": "selecione arquivos (Inclinação)"
+    },
+    
+    ## Roads
+
+    "rasters-text1-roads": {
+    "es": "Descargar raster original (Caminos)",
+    "en": "Download Original Raster (Roads)",
+    "pt": "Baixar Raster Original (Caminhos)"
+    },
+    "rasters-text2-roads": {
+        "es": "Descargar raster actual (Caminos)",
+        "en": "Download Current Raster (Roads)",
+        "pt": "Baixar Raster Atual (Caminhos)"
+    },
+    "rasters-text3-roads": {
+        "es": "Restaurar raster original (Caminos)",
+        "en": "Restore Original Raster (Roads)",
+        "pt": "Restaurar Raster Original (Caminhos)"
+    },
+    "rasters-text4-roads": {
+        "es": "Subir raster personalizado (Caminos):",
+        "en": "Upload Custom Raster (Roads):",
+        "pt": "Carregar Raster Personalizado (Caminhos):"
+    },
+    "rasters-text5-roads": {
+        "es": "Arrastre o (Caminos)",
+        "en": "Drag or (Roads)",
+        "pt": "Arraste ou (Caminhos)"
+    },
+    "rasters-text6-roads": {
+        "es": "seleccione archivos (Caminos)",
+        "en": "select files (Roads)",
+        "pt": "selecione arquivos (Caminhos)"
+    },
+    
+    ## Excluded
+
+    "rasters-text1-excluded": {
+    "es": "Descargar raster original (Exclusión)",
+    "en": "Download Original Raster (Excluded)",
+    "pt": "Baixar Raster Original (Exclusão)"
+    },
+    "rasters-text2-excluded": {
+        "es": "Descargar raster actual (Exclusión)",
+        "en": "Download Current Raster (Excluded)",
+        "pt": "Baixar Raster Atual (Exclusão)"
+    },
+    "rasters-text3-excluded": {
+        "es": "Restaurar raster original (Exclusión)",
+        "en": "Restore Original Raster (Excluded)",
+        "pt": "Restaurar Raster Original (Exclusão)"
+    },
+    "rasters-text4-excluded": {
+        "es": "Subir raster personalizado (Exclusión):",
+        "en": "Upload Custom Raster (Excluded):",
+        "pt": "Carregar Raster Personalizado (Exclusão):"
+    },
+    "rasters-text5-excluded": {
+        "es": "Arrastre o (Exclusión)",
+        "en": "Drag or (Excluded)",
+        "pt": "Arraste ou (Exclusão)"
+    },
+    "rasters-text6-excluded": {
+        "es": "seleccione archivos (Exclusión)",
+        "en": "select files (Excluded)",
+        "pt": "selecione arquivos (Exclusão)"
+    },
+    
+    ## Urban
+    
+    "rasters-text1-urban": {
+    "es": "Descargar raster original (Urbano)",
+    "en": "Download Original Raster (Urban)",
+    "pt": "Baixar Raster Original (Urbano)"
+    },
+    "rasters-text2-urban": {
+        "es": "Descargar raster actual (Urbano)",
+        "en": "Download Current Raster (Urban)",
+        "pt": "Baixar Raster Atual (Urbano)"
+    },
+    "rasters-text3-urban": {
+        "es": "Restaurar raster original (Urbano)",
+        "en": "Restore Original Raster (Urban)",
+        "pt": "Restaurar Raster Original (Urbano)"
+    },
+    "rasters-text4-urban": {
+        "es": "Subir raster personalizado (Urbano):",
+        "en": "Upload Custom Raster (Urban):",
+        "pt": "Carregar Raster Personalizado (Urbano):"
+    },
+    "rasters-text5-urban": {
+        "es": "Arrastre o (Urbano)",
+        "en": "Drag or (Urban)",
+        "pt": "Arraste ou (Urbano)"
+    },
+    "rasters-text6-urban": {
+        "es": "seleccione archivos (Urbano)",
+        "en": "select files (Urban)",
+        "pt": "selecione arquivos (Urbano)"
+    },
+    
+    # Pestaña Calibración
+    
+    "calibration-text1": {
+        "es": "Fechas",
+        "en": "Dates",
+        "pt": "Datas"
+    },
+    
+    "calibration-text2": {
+        "es": "Año inicial",
+        "en": "Initial Year",
+        "pt": "Ano Inicial"
+    },
+    
+    "calibration-text4": {
+        "es": "Año final",
+        "en": "Final Year",
+        "pt": "Ano Final"
+    },
+    
+    "calibration-text6": {
+        "es": "Monte Carlo",
+        "en": "Monte Carlo",
+        "pt": "Monte Carlo"
+    },
+    
+    "calibration-text7": {
+        "es": "Iteraciones",
+        "en": "Iterations",
+        "pt": "Iterações"
+    },
+    
+    "calibration-text9": {
+        "es": "Semilla",
+        "en": "Seed",
+        "pt": "Semente"
+    },
+
+    "calibration-text11": {
+        "es": "Refinamiento",
+        "en": "Refinement",
+        "pt": "Refinamento"
+    },
+    "calibration-text12": {
+        "es": "Etapas",
+        "en": "Stages",
+        "pt": "Etapas"
+    },
+
+    "calibration-text14": {
+        "es": "Divisiones",
+        "en": "Divisions",
+        "pt": "Divisões"
+    },
+
+    "calibration-text16": {
+        "es": "Ganadores",
+        "en": "Winners",
+        "pt": "Vencedores"
+    },
+
+    "calibration-text18": {
+        "es": "Misceláneo",
+        "en": "Miscellaneous",
+        "pt": "Diversos"
+    },
+    
+    "calibration-text19": {
+        "es": "Límite crítico",
+        "en": "Critical Limit",
+        "pt": "Limite Crítico"
+    },
+    
+    # Coeficientes
+    
+    "coeficientes-text1-diffusion": {
+        "es": "Mínimo",
+        "en": "Minimum",
+        "pt": "Mínimo"
+    },
+
+    "coeficientes-text3-diffusion": {
+        "es": "Máximo",
+        "en": "Maximum",
+        "pt": "Máximo"
+    },
+    
+    "coeficientes-text1-breed": {
+        "es": "Mínimo",
+        "en": "Minimum",
+        "pt": "Mínimo"
+    },
+
+    "coeficientes-text3-breed": {
+        "es": "Máximo",
+        "en": "Maximum",
+        "pt": "Máximo"
+    },
+    
+    "coeficientes-text1-spread": {
+        "es": "Mínimo",
+        "en": "Minimum",
+        "pt": "Mínimo"
+    },
+    
+    "coeficientes-text3-spread": {
+        "es": "Máximo",
+        "en": "Maximum",
+        "pt": "Máximo"
+    },
+
+    "coeficientes-text1-slope": {
+        "es": "Mínimo",
+        "en": "Minimum",
+        "pt": "Mínimo"
+    },
+
+    "coeficientes-text3-slope": {
+        "es": "Máximo",
+        "en": "Maximum",
+        "pt": "Máximo"
+    },
+    
+    "coeficientes-text1-road": {
+        "es": "Mínimo",
+        "en": "Minimum",
+        "pt": "Mínimo"
+    },
+
+    "coeficientes-text3-road": {
+        "es": "Máximo",
+        "en": "Maximum",
+        "pt": "Máximo"
+    },
+    
+    # Simulacion
+    
+    "btn-calibrate": {
+        "es": "Ejecutar calibración",
+        "en": "Execute Calibration",
+        "pt": "Executar Calibração"
+    },
+    "simulacion-text1": {
+        "es": "Parámetros",
+        "en": "Parameters",
+        "pt": "Parâmetros"
+    },
+    "simulacion-text2": {
+        "es": "Años de calibración: ",
+        "en": "Calibration Years: ",
+        "pt": "Anos de calibração: "
+    },
+    "simulacion-text3": {
+        "es": "Iteraciones de Monte Carlo: ",
+        "en": "Monte Carlo Iterations: ",
+        "pt": "Iterações do Monte Carlo: "
+    },
+    "simulacion-text4": {
+        "es": "Semilla del PRNG: ",
+        "en": "PRNG Seed: ",
+        "pt": "Semente do PRNG: "
+    },
+    "simulacion-text5": {
+        "es": "Etapas de refinamiento: ",
+        "en": "Refinement Stages: ",
+        "pt": "Etapas de refinamento: "
+    },
+    "simulacion-text6": {
+        "es": "Divisiones de refinamiento: ",
+        "en": "Refinement Divisions: ",
+        "pt": "Divisões de refinamento: "
+    },
+    "simulacion-text7": {
+        "es": "Ganadores de refinamiento: ",
+        "en": "Refinement Winners: ",
+        "pt": "Vencedores do refinamento: "
+    },
+    "simulacion-text8": {
+        "es": "Límite crítico: ",
+        "en": "Critical Limit: ",
+        "pt": "Limite Crítico: "
+    },
+    "simulacion-text9": {
+        "es": "Espacio de búsqueda",
+        "en": "Search Space",
+        "pt": "Espaço de Busca"
+    },
+    "simulacion-text10": {
+        "es": "Rasters personalizados",
+        "en": "Custom Rasters",
+        "pt": "Rasters Personalizados"
+    },
+    "simulacion-text11": {
+        "es": "Resumen",
+        "en": "Summary",
+        "pt": "Resumo"
+    },
+    
+    # Predicción
+    
+    "prediccion-text1": {
+        "es": "Fechas",
+        "en": "Dates",
+        "pt": "Datas"
+    },
+    "prediccion-text2": {
+        "es": "Año inicial",
+        "en": "Initial Year",
+        "pt": "Ano Inicial"
+    },
+    
+    "prediccion-text4": {
+        "es": "Número de años",
+        "en": "Number of Years",
+        "pt": "Número de Anos"
+    },
+
+    "prediccion-text6": {
+        "es": "Monte Carlo",
+        "en": "Monte Carlo",
+        "pt": "Monte Carlo"
+    },
+    "prediccion-text7": {
+        "es": "Iteraciones",
+        "en": "Iterations",
+        "pt": "Iterações"
+    },
+
+    "prediccion-text9": {
+        "es": "Semilla",
+        "en": "Seed",
+        "pt": "Semente"
+    },
+
+    "prediccion-text11": {
+        "es": "Misceláneo",
+        "en": "Miscellaneous",
+        "pt": "Diversos"
+    },
+    "prediccion-text12": {
+        "es": "Límite crítico",
+        "en": "Critical Limit",
+        "pt": "Limite Crítico"
+    },
+
+    "prediccion-text14": {
+        "es": "Escenario 1",
+        "en": "Scenario 1",
+        "pt": "Cenário 1"
+    },
+    "prediccion-text15": {
+        "es": "Escenario 2",
+        "en": "Scenario 2",
+        "pt": "Cenário 2"
+    },
+    "prediccion-text16": {
+        "es": "Escenario 3",
+        "en": "Scenario 3",
+        "pt": "Cenário 3"
+    },
+    
+    "btn-add-row": {
+    "es": "Añadir escenario",
+    "en": "Add Scenario",
+    "pt": "Adicionar Cenário"
+        
+     },
+    
+    "prediccion-text17": {
+        "es": "Resumen",
+        "en": "Summary",
+        "pt": "Resumo"
+    },
+    "prediccion-text18": {
+        "es": "Parámetros",
+        "en": "Parameters",
+        "pt": "Parâmetros"
+    },
+    "prediccion-text19": {
+        "es": "Año inicial: ",
+        "en": "Initial Year: ",
+        "pt": "Ano Inicial: "
+    },
+    "prediccion-text20": {
+        "es": "Número de años: ",
+        "en": "Number of Years: ",
+        "pt": "Número de Anos: "
+    },
+    "prediccion-text21": {
+        "es": "Iteraciones de Monte Carlo: ",
+        "en": "Monte Carlo Iterations: ",
+        "pt": "Iterações do Monte Carlo: "
+    },
+    "prediccion-text22": {
+        "es": "Semilla del PRNG: ",
+        "en": "PRNG Seed: ",
+        "pt": "Semente do PRNG: "
+    },
+    "prediccion-text23": {
+        "es": "Límite crítico: ",
+        "en": "Critical Limit: ",
+        "pt": "Limite Crítico: "
+    },
+    "prediccion-text24": {
+        "es": "Coeficientes",
+        "en": "Coefficients",
+        "pt": "Coeficientes"
+    },
+    "prediccion-text25": {
+        "es": "(Un asterisco indica que el coeficiente fue modificado)",
+        "en": "(An asterisk indicates that the coefficient was modified)",
+        "pt": "(Um asterisco indica que o coeficiente foi modificado)"
+    },
+    "prediccion-text26": {
+        "es": "Rasters personalizados",
+        "en": "Custom Rasters",
+        "pt": "Rasters Personalizados"
+    },
+    "btn-predict": {
+        "es": "Ejecutar predicción",
+        "en": "Run Prediction",
+        "pt": "Executar Previsão"
+    }
+    
+}
+
+translations2 = {
+    
+    "calibration-text3": {
+        "es": "Año a partir del cual realizar la calibración.",
+        "en": "Year from which to perform the calibration.",
+        "pt": "Ano a partir do qual realizar a calibração."
+    },
+    
+    "calibration-text5": {
+        "es": "Año hasta el cual realizar la calibración.",
+        "en": "Year until which to perform the calibration.",
+        "pt": "Ano até o qual realizar a calibração."
+    },
+    
+    "calibration-text8": {
+        "es": "Número de iteraciones de Monte Carlo.",
+        "en": "Number of Monte Carlo iterations.",
+        "pt": "Número de iterações do Monte Carlo."
+    },
+    
+    "calibration-text10": {
+        "es": "Semilla para el generador de números aleatorios. La misma semilla producirá los mismos resultados cada vez.",
+        "en": "Seed for the random number generator. The same seed will produce the same results each time.",
+        "pt": "Semente para o gerador de números aleatórios. A mesma semente produzirá os mesmos resultados todas as vezes."
+    },
+    
+    "calibration-text13": {
+        "es": "Número de etapas de refinamiento.",
+        "en": "Number of refinement stages.",
+        "pt": "Número de etapas de refinamento."
+    },
+    
+    "calibration-text15": {
+        "es": "Número de divisiones de refinamiento.",
+        "en": "Number of refinement divisions.",
+        "pt": "Número de divisões de refinamento."
+    },
+    
+    "calibration-text17": {
+        "es": "Número de ganadores de refinamiento.",
+        "en": "Number of refinement winners.",
+        "pt": "Número de vencedores do refinamento."
+    },
+    
+    "calibration-text20": {
+        "es": "Límite crítico de pendientes.",
+        "en": "Critical limit of slopes.",
+        "pt": "Limite crítico de inclinações."
+    },
+    
+    # Coeficientes
+    
+    "coeficientes-text2-diffusion": {
+        "es": "Coeficiente mínimo a probar.",
+        "en": "Minimum coefficient to test.",
+        "pt": "Coeficiente mínimo a testar."
+    },
+    
+    "coeficientes-text4-diffusion": {
+        "es": "Coeficiente máximo a probar.",
+        "en": "Maximum coefficient to test.",
+        "pt": "Coeficiente máximo a testar."
+    },
+    
+    "coeficientes-text2-breed": {
+        "es": "Coeficiente mínimo a probar.",
+        "en": "Minimum coefficient to test.",
+        "pt": "Coeficiente mínimo a testar."
+    },
+
+    "coeficientes-text4-breed": {
+        "es": "Coeficiente máximo a probar.",
+        "en": "Maximum coefficient to test.",
+        "pt": "Coeficiente máximo a testar."
+    },
+    
+    "coeficientes-text2-spread": {
+        "es": "Coeficiente mínimo a probar.",
+        "en": "Minimum coefficient to test.",
+        "pt": "Coeficiente mínimo a testar."
+    },
+    
+    "coeficientes-text4-spread": {
+        "es": "Coeficiente máximo a probar.",
+        "en": "Maximum coefficient to test.",
+        "pt": "Coeficiente máximo a testar."
+    },
+    
+    "coeficientes-text2-slope": {
+        "es": "Coeficiente mínimo a probar.",
+        "en": "Minimum coefficient to test.",
+        "pt": "Coeficiente mínimo a testar."
+    },
+
+    "coeficientes-text4-slope": {
+        "es": "Coeficiente máximo a probar.",
+        "en": "Maximum coefficient to test.",
+        "pt": "Coeficiente máximo a testar."
+    },
+    
+    "coeficientes-text2-road": {
+        "es": "Coeficiente mínimo a probar.",
+        "en": "Minimum coefficient to test.",
+        "pt": "Coeficiente mínimo a testar."
+    },
+
+    "coeficientes-text4-road": {
+        "es": "Coeficiente máximo a probar.",
+        "en": "Maximum coefficient to test.",
+        "pt": "Coeficiente máximo a testar."
+    },
+    
+    # Prediccion
+    
+    "prediccion-text3": {
+        "es": "Año a partir del cual realizar la predicción.",
+        "en": "Year from which to start the prediction.",
+        "pt": "Ano a partir do qual realizar a previsão."
+    },
+
+    "prediccion-text5": {
+        "es": "Número de años hacia el futuro para los cuales hacer la predicción.",
+        "en": "Number of years into the future for which to make the prediction.",
+        "pt": "Número de anos para o futuro para os quais fazer a previsão."
+    },
+
+    "prediccion-text8": {
+        "es": "Número de iteraciones de Monte Carlo.",
+        "en": "Number of Monte Carlo iterations.",
+        "pt": "Número de iterações do Monte Carlo."
+    },
+
+    "prediccion-text10": {
+        "es": "Semilla para el generador de números aleatorios. La misma semilla producirá los mismos resultados cada vez.",
+        "en": "Seed for the random number generator. The same seed will produce the same results every time.",
+        "pt": "Semente para o gerador de números aleatórios. A mesma semente produzirá os mesmos resultados todas as vezes."
+    },
+
+    "prediccion-text13": {
+        "es": "Límite crítico de pendientes.",
+        "en": "Critical slope limit.",
+        "pt": "Limite crítico de inclinações."
+    }
+}
+
+
 
 RASTER_FIELDS = ["slope", "roads", "excluded", "urban"]
 RASTER_FIELD_MAP = {
@@ -44,116 +652,388 @@ dash.register_page(
 
 # ==================== Pestaña rasters ====================#
 
-subsubtabs = []
-downloads = []
-for field in RASTER_FIELDS:
-    tab = dbc.Tab(
-        [
-            dbc.Card(
-                dbc.CardBody(
-                    dbc.Container(
-                        dbc.Row(
-                            [
-                                dbc.Col(
-                                    dcc.Graph(
-                                        id={"type": "graph-raster", "field": field},
-                                        responsive=True,
-                                        style={"height": "60vh"},
+tab_slope = dbc.Tab(
+    [
+        dbc.Card(
+            dbc.CardBody(
+                dbc.Container(
+                    dbc.Row(
+                        [
+                            dbc.Col(
+                                dcc.Graph(
+                                    id={"type": "graph-raster", "field": "slope"},
+                                    responsive=True,
+                                    style={"height": "60vh"},
+                                ),
+                                width=8,
+                            ),
+                            dbc.Col(
+                                [
+                                    dbc.Row(
+                                        dbc.Col(
+                                            dbc.Button(
+                                                html.Span(id="rasters-text1-slope"),
+                                                id={"type": "btn-download-orig-raster", "field": "slope"},
+                                                className="text-center",
+                                            ),
+                                            class_name="text-center",
+                                        ),
+                                        class_name="my-2",
                                     ),
-                                    width=8,
-                                ),
-                                dbc.Col(
-                                    [
-                                        dbc.Row(
-                                            dbc.Col(
-                                                dbc.Button(
-                                                    "Descargar raster original",
-                                                    id={
-                                                        "type": "btn-download-orig-raster",
-                                                        "field": field,
-                                                    },
-                                                ),
-                                                class_name="text-center",
+                                    dbc.Row(
+                                        dbc.Col(
+                                            dbc.Button(
+                                                html.Span(id="rasters-text2-slope"),
+                                                id={"type": "btn-download-raster", "field": "slope"},
+                                                className="text-center",
                                             ),
-                                            class_name="my-2",
+                                            class_name="text-center",
                                         ),
-                                        dbc.Row(
-                                            dbc.Col(
-                                                dbc.Button(
-                                                    "Descargar raster actual",
-                                                    id={
-                                                        "type": "btn-download-raster",
-                                                        "field": field,
-                                                    },
-                                                ),
-                                                class_name="text-center",
+                                        class_name="my-2",
+                                    ),
+                                    dbc.Row(
+                                        dbc.Col(
+                                            dbc.Button(
+                                                html.Span(id="rasters-text3-slope"),
+                                                id={"type": "btn-restore-raster", "field": "slope"},
+                                                className="bg-danger text-center",
                                             ),
-                                            class_name="my-2",
+                                            class_name="text-center",
                                         ),
-                                        dbc.Row(
-                                            dbc.Col(
-                                                dbc.Button(
-                                                    "Restaurar raster original",
-                                                    id={
-                                                        "type": "btn-restore-raster",
-                                                        "field": field,
-                                                    },
-                                                    className="bg-danger",
+                                        class_name="my-2",
+                                    ),
+                                    dbc.Row(
+                                        dbc.Col(
+                                            [
+                                                html.P(
+                                                    html.Span(id="rasters-text4-slope"),
+                                                    className="mt-4",
                                                 ),
-                                                class_name="text-center",
-                                            ),
-                                            class_name="my-2",
-                                        ),
-                                        dbc.Row(
-                                            dbc.Col(
-                                                [
-                                                    html.P(
-                                                        "Subir raster personalizado:",
-                                                        className="mt-4",
+                                                dcc.Upload(
+                                                    html.Div(
+                                                        [
+                                                            html.Span(id="rasters-text5-slope"),
+                                                            html.A(html.Span(id="rasters-text6-slope"))
+                                                        ]
                                                     ),
-                                                    dcc.Upload(
-                                                        html.Div(
-                                                            [
-                                                                "Arrastre o ",
-                                                                html.A(
-                                                                    "seleccione archivos"
-                                                                ),
-                                                            ]
-                                                        ),
-                                                        id={
-                                                            "type": "upload-raster",
-                                                            "field": field,
-                                                        },
-                                                        style={
-                                                            "width": "100%",
-                                                            "height": "60px",
-                                                            "lineHeight": "60px",
-                                                            "borderWidth": "1px",
-                                                            "borderStyle": "dashed",
-                                                            "borderRadius": "5px",
-                                                            "textAlign": "center",
-                                                        },
-                                                    ),
-                                                ],
-                                                class_name="text-center",
-                                            ),
-                                            class_name="my-2",
+                                                    id={"type": "upload-raster", "field": "slope"},
+                                                    style={
+                                                        "width": "100%",
+                                                        "height": "60px",
+                                                        "lineHeight": "60px",
+                                                        "borderWidth": "1px",
+                                                        "borderStyle": "dashed",
+                                                        "borderRadius": "5px",
+                                                        "textAlign": "center",
+                                                    },
+                                                ),
+                                            ],
+                                            class_name="text-center",
                                         ),
-                                    ],
-                                    width=4,
-                                ),
-                            ]
-                        )
+                                        class_name="my-2",
+                                    ),
+                                ],
+                                width=4,
+                            ),
+                        ]
                     )
                 )
             )
-        ],
-        label=RASTER_FIELD_MAP[field],
-    )
-    subsubtabs.append(tab)
-    downloads.append(dcc.Download(id={"type": "download-orig-raster", "field": field}))
-    downloads.append(dcc.Download(id={"type": "download-raster", "field": field}))
-    downloads.append(dcc.Download(id="download-predicted-rasters"))
+        )
+    ],
+    label=RASTER_FIELD_MAP["slope"],
+)
+
+tab_roads = dbc.Tab(
+    [
+        dbc.Card(
+            dbc.CardBody(
+                dbc.Container(
+                    dbc.Row(
+                        [
+                            dbc.Col(
+                                dcc.Graph(
+                                    id={"type": "graph-raster", "field": "roads"},
+                                    responsive=True,
+                                    style={"height": "60vh"},
+                                ),
+                                width=8,
+                            ),
+                            dbc.Col(
+                                [
+                                    dbc.Row(
+                                        dbc.Col(
+                                            dbc.Button(
+                                                html.Span(id="rasters-text1-roads"),
+                                                id={"type": "btn-download-orig-raster", "field": "roads"},
+                                                className="text-center",
+                                            ),
+                                            class_name="text-center",
+                                        ),
+                                        class_name="my-2",
+                                    ),
+                                    dbc.Row(
+                                        dbc.Col(
+                                            dbc.Button(
+                                                html.Span(id="rasters-text2-roads"),
+                                                id={"type": "btn-download-raster", "field": "roads"},
+                                                className="text-center",
+                                            ),
+                                            class_name="text-center",
+                                        ),
+                                        class_name="my-2",
+                                    ),
+                                    dbc.Row(
+                                        dbc.Col(
+                                            dbc.Button(
+                                                html.Span(id="rasters-text3-roads"),
+                                                id={"type": "btn-restore-raster", "field": "roads"},
+                                                className="bg-danger text-center",
+                                            ),
+                                            class_name="text-center",
+                                        ),
+                                        class_name="my-2",
+                                    ),
+                                    dbc.Row(
+                                        dbc.Col(
+                                            [
+                                                html.P(
+                                                    html.Span(id="rasters-text4-roads"),
+                                                    className="mt-4",
+                                                ),
+                                                dcc.Upload(
+                                                    html.Div(
+                                                        [
+                                                            html.Span(id="rasters-text5-roads"),
+                                                            html.A(html.Span(id="rasters-text6-roads"))
+                                                        ]
+                                                    ),
+                                                    id={"type": "upload-raster", "field": "roads"},
+                                                    style={
+                                                        "width": "100%",
+                                                        "height": "60px",
+                                                        "lineHeight": "60px",
+                                                        "borderWidth": "1px",
+                                                        "borderStyle": "dashed",
+                                                        "borderRadius": "5px",
+                                                        "textAlign": "center",
+                                                    },
+                                                ),
+                                            ],
+                                            class_name="text-center",
+                                        ),
+                                        class_name="my-2",
+                                    ),
+                                ],
+                                width=4,
+                            ),
+                        ]
+                    )
+                )
+            )
+        )
+    ],
+    label=RASTER_FIELD_MAP["roads"],
+)
+
+
+tab_excluded = dbc.Tab(
+    [
+        dbc.Card(
+            dbc.CardBody(
+                dbc.Container(
+                    dbc.Row(
+                        [
+                            dbc.Col(
+                                dcc.Graph(
+                                    id={"type": "graph-raster", "field": "excluded"},
+                                    responsive=True,
+                                    style={"height": "60vh"},
+                                ),
+                                width=8,
+                            ),
+                            dbc.Col(
+                                [
+                                    dbc.Row(
+                                        dbc.Col(
+                                            dbc.Button(
+                                                html.Span(id="rasters-text1-excluded"),
+                                                id={"type": "btn-download-orig-raster", "field": "excluded"},
+                                                className="text-center",
+                                            ),
+                                            class_name="text-center",
+                                        ),
+                                        class_name="my-2",
+                                    ),
+                                    dbc.Row(
+                                        dbc.Col(
+                                            dbc.Button(
+                                                html.Span(id="rasters-text2-excluded"),
+                                                id={"type": "btn-download-raster", "field": "excluded"},
+                                                className="text-center",
+                                            ),
+                                            class_name="text-center",
+                                        ),
+                                        class_name="my-2",
+                                    ),
+                                    dbc.Row(
+                                        dbc.Col(
+                                            dbc.Button(
+                                                html.Span(id="rasters-text3-excluded"),
+                                                id={"type": "btn-restore-raster", "field": "excluded"},
+                                                className="bg-danger text-center",
+                                            ),
+                                            class_name="text-center",
+                                        ),
+                                        class_name="my-2",
+                                    ),
+                                    dbc.Row(
+                                        dbc.Col(
+                                            [
+                                                html.P(
+                                                    html.Span(id="rasters-text4-excluded"),
+                                                    className="mt-4",
+                                                ),
+                                                dcc.Upload(
+                                                    html.Div(
+                                                        [
+                                                            html.Span(id="rasters-text5-excluded"),
+                                                            html.A(html.Span(id="rasters-text6-excluded"))
+                                                        ]
+                                                    ),
+                                                    id={"type": "upload-raster", "field": "excluded"},
+                                                    style={
+                                                        "width": "100%",
+                                                        "height": "60px",
+                                                        "lineHeight": "60px",
+                                                        "borderWidth": "1px",
+                                                        "borderStyle": "dashed",
+                                                        "borderRadius": "5px",
+                                                        "textAlign": "center",
+                                                    },
+                                                ),
+                                            ],
+                                            class_name="text-center",
+                                        ),
+                                        class_name="my-2",
+                                    ),
+                                ],
+                                width=4,
+                            ),
+                        ]
+                    )
+                )
+            )
+        )
+    ],
+    label=RASTER_FIELD_MAP["excluded"],
+)
+
+
+tab_urban = dbc.Tab(
+    [
+        dbc.Card(
+            dbc.CardBody(
+                dbc.Container(
+                    dbc.Row(
+                        [
+                            dbc.Col(
+                                dcc.Graph(
+                                    id={"type": "graph-raster", "field": "urban"},
+                                    responsive=True,
+                                    style={"height": "60vh"},
+                                ),
+                                width=8,
+                            ),
+                            dbc.Col(
+                                [
+                                    dbc.Row(
+                                        dbc.Col(
+                                            dbc.Button(
+                                                html.Span(id="rasters-text1-urban"),
+                                                id={"type": "btn-download-orig-raster", "field": "urban"},
+                                                className="text-center",
+                                            ),
+                                            class_name="text-center",
+                                        ),
+                                        class_name="my-2",
+                                    ),
+                                    dbc.Row(
+                                        dbc.Col(
+                                            dbc.Button(
+                                                html.Span(id="rasters-text2-urban"),
+                                                id={"type": "btn-download-raster", "field": "urban"},
+                                                className="text-center",
+                                            ),
+                                            class_name="text-center",
+                                        ),
+                                        class_name="my-2",
+                                    ),
+                                    dbc.Row(
+                                        dbc.Col(
+                                            dbc.Button(
+                                                html.Span(id="rasters-text3-urban"),
+                                                id={"type": "btn-restore-raster", "field": "urban"},
+                                                className="bg-danger text-center",
+                                            ),
+                                            class_name="text-center",
+                                        ),
+                                        class_name="my-2",
+                                    ),
+                                    dbc.Row(
+                                        dbc.Col(
+                                            [
+                                                html.P(
+                                                    html.Span(id="rasters-text4-urban"),
+                                                    className="mt-4",
+                                                ),
+                                                dcc.Upload(
+                                                    html.Div(
+                                                        [
+                                                            html.Span(id="rasters-text5-urban"),
+                                                            html.A(html.Span(id="rasters-text6-urban"))
+                                                        ]
+                                                    ),
+                                                    id={"type": "upload-raster", "field": "urban"},
+                                                    style={
+                                                        "width": "100%",
+                                                        "height": "60px",
+                                                        "lineHeight": "60px",
+                                                        "borderWidth": "1px",
+                                                        "borderStyle": "dashed",
+                                                        "borderRadius": "5px",
+                                                        "textAlign": "center",
+                                                    },
+                                                ),
+                                            ],
+                                            class_name="text-center",
+                                        ),
+                                        class_name="my-2",
+                                    ),
+                                ],
+                                width=4,
+                            ),
+                        ]
+                    )
+                )
+            )
+        )
+    ],
+    label=RASTER_FIELD_MAP["urban"],
+)
+
+subsubtabs = [tab_slope, tab_roads, tab_excluded, tab_urban]
+downloads = [
+    dcc.Download(id={"type": "download-orig-raster", "field": "slope"}),
+    dcc.Download(id={"type": "download-raster", "field": "slope"}),
+    dcc.Download(id={"type": "download-orig-raster", "field": "roads"}),
+    dcc.Download(id={"type": "download-raster", "field": "roads"}),
+    dcc.Download(id={"type": "download-orig-raster", "field": "excluded"}),
+    dcc.Download(id={"type": "download-raster", "field": "excluded"}),
+    dcc.Download(id={"type": "download-orig-raster", "field": "urban"}),
+    dcc.Download(id={"type": "download-raster", "field": "urban"}),
+    dcc.Download(id="download-predicted-rasters")
+]
 
 tab0_content = dbc.Card(dbc.CardBody(dbc.Tabs(subsubtabs)))
 
@@ -165,17 +1045,17 @@ subtab_1 = dbc.Card(
     dbc.CardBody(
         dbc.Container(
             [
-                dbc.Row(dbc.Col(html.H4("Fechas"))),
+                dbc.Row(dbc.Col(html.H4(html.Span(id="calibration-text1")))),
                 dbc.Row(
                     [
                         dbc.Col(
                             dbc.InputGroup(
                                 [
                                     dbc.InputGroupText(
-                                        sl.help_text(
-                                            "Año inicial",
-                                            "Año a partir del cual realizar la calibración.",
-                                        )
+                                        sl.help_text_translation("calibration-text2",
+                                                                 translations2["calibration-text3"]["es"],
+                                                                 "calibration-text3")
+                        
                                     ),
                                     dbc.Select(
                                         required=True,
@@ -191,10 +1071,9 @@ subtab_1 = dbc.Card(
                             dbc.InputGroup(
                                 [
                                     dbc.InputGroupText(
-                                        sl.help_text(
-                                            "Año final",
-                                            "Año hasta el cual realizar la calibración.",
-                                        )
+                                        sl.help_text_translation("calibration-text4",
+                                                                 translations2["calibration-text5"]["es"],
+                                                                 "calibration-text5")
                                     ),
                                     dbc.Select(
                                         required=True,
@@ -209,17 +1088,16 @@ subtab_1 = dbc.Card(
                     ],
                     className="mb-4",
                 ),
-                dbc.Row(dbc.Col(html.H4("Monte Carlo"))),
+                dbc.Row(dbc.Col(html.H4(html.Span(id="calibration-text6")))),
                 dbc.Row(
                     [
                         dbc.Col(
                             dbc.InputGroup(
                                 [
                                     dbc.InputGroupText(
-                                        sl.help_text(
-                                            "Iteraciones",
-                                            "Número de iteraciones de Monte Carlo.",
-                                        )
+                                        sl.help_text_translation("calibration-text7",
+                                                                 translations2["calibration-text8"]["es"],
+                                                                 "calibration-text8")
                                     ),
                                     dbc.Input(
                                         type="number",
@@ -240,10 +1118,9 @@ subtab_1 = dbc.Card(
                             dbc.InputGroup(
                                 [
                                     dbc.InputGroupText(
-                                        sl.help_text(
-                                            "Semilla",
-                                            "Semilla para el generador de números aleatorios. La misma semilla producirá los mismos resultados cada vez.",
-                                        )
+                                        sl.help_text_translation("calibration-text9",
+                                                                 translations2["calibration-text10"]["es"],
+                                                                 "calibration-text10")
                                     ),
                                     dbc.Input(
                                         type="number",
@@ -262,17 +1139,16 @@ subtab_1 = dbc.Card(
                     ],
                     className="mb-4",
                 ),
-                dbc.Row(dbc.Col(html.H4("Refinamiento"))),
+                dbc.Row(dbc.Col(html.H4(html.Span(id="calibration-text11")))),
                 dbc.Row(
                     [
                         dbc.Col(
                             dbc.InputGroup(
                                 [
                                     dbc.InputGroupText(
-                                        sl.help_text(
-                                            "Etapas",
-                                            "Número de etapas de refinamiento.",
-                                        )
+                                        sl.help_text_translation("calibration-text12",
+                                                                 translations2["calibration-text13"]["es"],
+                                                                 "calibration-text13")
                                     ),
                                     dbc.Input(
                                         type="number",
@@ -293,10 +1169,9 @@ subtab_1 = dbc.Card(
                             dbc.InputGroup(
                                 [
                                     dbc.InputGroupText(
-                                        sl.help_text(
-                                            "Divisiones",
-                                            "Número de divisiones de refinamiento.",
-                                        )
+                                        sl.help_text_translation("calibration-text14",
+                                                                 translations2["calibration-text15"]["es"],
+                                                                 "calibration-text15")
                                     ),
                                     dbc.Input(
                                         type="number",
@@ -317,10 +1192,9 @@ subtab_1 = dbc.Card(
                             dbc.InputGroup(
                                 [
                                     dbc.InputGroupText(
-                                        sl.help_text(
-                                            "Ganadores",
-                                            "Número de ganadores de refinamiento.",
-                                        )
+                                        sl.help_text_translation("calibration-text16",
+                                                                 translations2["calibration-text17"]["es"],
+                                                                 "calibration-text17")
                                     ),
                                     dbc.Input(
                                         type="number",
@@ -340,16 +1214,15 @@ subtab_1 = dbc.Card(
                     ],
                     className="mb-4",
                 ),
-                dbc.Row(dbc.Col(html.H4("Misceláneo"))),
+                dbc.Row(dbc.Col(html.H4(html.Span(id="calibration-text18")))),
                 dbc.Row(
                     dbc.Col(
                         dbc.InputGroup(
                             [
                                 dbc.InputGroupText(
-                                    sl.help_text(
-                                        "Límite crítico",
-                                        "Límite crítico de pendientes.",
-                                    )
+                                    sl.help_text_translation("calibration-text19",
+                                                                 translations2["calibration-text20"]["es"],
+                                                                 "calibration-text20")
                                 ),
                                 dbc.Input(
                                     type="number",
@@ -375,60 +1248,267 @@ subtab_1 = dbc.Card(
 
 
 # Coeficientes
-rows_3 = []
-for name in sl.FIELDS:
-    subrow_1 = dbc.Row(dbc.Col(html.H4(name.title())))
-    subrow_2 = dbc.Row(
-        [
-            dbc.Col(
-                dbc.InputGroup(
-                    [
-                        dbc.InputGroupText(
-                            sl.help_text("Mínimo", "Coeficiente mínimo a probar.")
-                        ),
-                        dbc.Input(
-                            type="number",
-                            required=True,
-                            placeholder=1,
-                            value=1,
-                            min=1,
-                            max=100,
-                            id={"type": "val-calibration-min", "field": name},
-                        ),
-                    ]
-                )
-            ),
-            dbc.Col(
-                dbc.InputGroup(
-                    [
-                        dbc.InputGroupText(
-                            sl.help_text("Máximo", "Coeficiente máximo a probar.")
-                        ),
-                        dbc.Input(
-                            type="number",
-                            required=True,
-                            placeholder=100,
-                            value=100,
-                            min=1,
-                            max=100,
-                            id={"type": "val-calibration-max", "field": name},
-                        ),
-                    ]
-                )
-            ),
-        ],
-        className="mb-4",
-    )
+# Coeficientes diffusion
 
-    rows_3.append(subrow_1)
-    rows_3.append(subrow_2)
+subrow_1_diffusion = dbc.Row(dbc.Col(html.H4("Diffusion")))
+subrow_2_diffusion = dbc.Row(
+    [
+        dbc.Col(
+            dbc.InputGroup(
+                [
+                    dbc.InputGroupText(
+                    sl.help_text_translation("coeficientes-text1-diffusion",
+                                             translations2["coeficientes-text2-diffusion"]["es"],
+                                             "coeficientes-text2-diffusion")),
+                    dbc.Input(
+                        type="number",
+                        required=True,
+                        placeholder=1,
+                        value=1,
+                        min=1,
+                        max=100,
+                        id={"type": "val-calibration-min", "field": "diffusion"},
+                    ),
+                ]
+            )
+        ),
+        dbc.Col(
+            dbc.InputGroup(
+                [
+                    dbc.InputGroupText(
+                    sl.help_text_translation("coeficientes-text3-diffusion",
+                                             translations2["coeficientes-text4-diffusion"]["es"],
+                                             "coeficientes-text4-diffusion")),
+                    dbc.Input(
+                        type="number",
+                        required=True,
+                        placeholder=100,
+                        value=100,
+                        min=1,
+                        max=100,
+                        id={"type": "val-calibration-max", "field": "diffusion"},
+                    ),
+                ]
+            )
+        ),
+    ],
+    className="mb-4",
+)
+
+# Coeficientes breed
+subrow_1_breed = dbc.Row(dbc.Col(html.H4("Breed")))
+subrow_2_breed = dbc.Row(
+    [
+        dbc.Col(
+            dbc.InputGroup(
+                [
+                    dbc.InputGroupText(
+                    sl.help_text_translation("coeficientes-text1-breed",
+                                             translations2["coeficientes-text2-breed"]["es"],
+                                             "coeficientes-text2-breed")),
+                    dbc.Input(
+                        type="number",
+                        required=True,
+                        placeholder=1,
+                        value=1,
+                        min=1,
+                        max=100,
+                        id={"type": "val-calibration-min", "field": "breed"},
+                    ),
+                ]
+            )
+        ),
+        dbc.Col(
+            dbc.InputGroup(
+                [
+                    dbc.InputGroupText(
+                    sl.help_text_translation("coeficientes-text3-breed",
+                                             translations2["coeficientes-text4-breed"]["es"],
+                                             "coeficientes-text4-breed")
+                    ),
+                    dbc.Input(
+                        type="number",
+                        required=True,
+                        placeholder=100,
+                        value=100,
+                        min=1,
+                        max=100,
+                        id={"type": "val-calibration-max", "field": "breed"},
+                    ),
+                ]
+            )
+        ),
+    ],
+    className="mb-4",
+)
+
+# Coeficientes spread
+subrow_1_spread = dbc.Row(dbc.Col(html.H4("Spread")))
+subrow_2_spread = dbc.Row(
+    [
+        dbc.Col(
+            dbc.InputGroup(
+                [
+                    dbc.InputGroupText(
+                    sl.help_text_translation("coeficientes-text1-spread",
+                                             translations2["coeficientes-text2-spread"]["es"],
+                                             "coeficientes-text2-spread")
+                    ),
+                    dbc.Input(
+                        type="number",
+                        required=True,
+                        placeholder=1,
+                        value=1,
+                        min=1,
+                        max=100,
+                        id={"type": "val-calibration-min", "field": "spread"},
+                    ),
+                ]
+            )
+        ),
+        dbc.Col(
+            dbc.InputGroup(
+                [
+                    dbc.InputGroupText(
+                    sl.help_text_translation("coeficientes-text3-spread",
+                                             translations2["coeficientes-text4-spread"]["es"],
+                                             "coeficientes-text4-spread")
+                    ),
+                    dbc.Input(
+                        type="number",
+                        required=True,
+                        placeholder=100,
+                        value=100,
+                        min=1,
+                        max=100,
+                        id={"type": "val-calibration-max", "field": "spread"},
+                    ),
+                ]
+            )
+        ),
+    ],
+    className="mb-4",
+)
+
+# Coeficientes slope
+subrow_1_slope = dbc.Row(dbc.Col(html.H4("Slope")))
+subrow_2_slope = dbc.Row(
+    [
+        dbc.Col(
+            dbc.InputGroup(
+                [
+                    dbc.InputGroupText(
+                    sl.help_text_translation("coeficientes-text1-slope",
+                                             translations2["coeficientes-text2-slope"]["es"],
+                                             "coeficientes-text2-slope")
+                    ),
+                    dbc.Input(
+                        type="number",
+                        required=True,
+                        placeholder=1,
+                        value=1,
+                        min=1,
+                        max=100,
+                        id={"type": "val-calibration-min", "field": "slope"},
+                    ),
+                ]
+            )
+        ),
+        dbc.Col(
+            dbc.InputGroup(
+                [
+                    dbc.InputGroupText(
+                    sl.help_text_translation("coeficientes-text3-slope",
+                                             translations2["coeficientes-text4-slope"]["es"],
+                                             "coeficientes-text4-slope")
+                    ),
+                    dbc.Input(
+                        type="number",
+                        required=True,
+                        placeholder=100,
+                        value=100,
+                        min=1,
+                        max=100,
+                        id={"type": "val-calibration-max", "field": "slope"},
+                    ),
+                ]
+            )
+        ),
+    ],
+    className="mb-4",
+)
+
+# Coeficientes road
+subrow_1_road = dbc.Row(dbc.Col(html.H4("Road")))
+subrow_2_road = dbc.Row(
+    [
+        dbc.Col(
+            dbc.InputGroup(
+                [
+                    dbc.InputGroupText(
+                    sl.help_text_translation("coeficientes-text1-road",
+                                             translations2["coeficientes-text2-road"]["es"],
+                                             "coeficientes-text2-road")
+                    ),
+                    dbc.Input(
+                        type="number",
+                        required=True,
+                        placeholder=1,
+                        value=1,
+                        min=1,
+                        max=100,
+                        id={"type": "val-calibration-min", "field": "road"},
+                    ),
+                ]
+            )
+        ),
+        dbc.Col(
+            dbc.InputGroup(
+                [
+                    dbc.InputGroupText(
+                    sl.help_text_translation("coeficientes-text3-road",
+                                             translations2["coeficientes-text4-road"]["es"],
+                                             "coeficientes-text4-road")
+                    ),
+                    dbc.Input(
+                        type="number",
+                        required=True,
+                        placeholder=100,
+                        value=100,
+                        min=1,
+                        max=100,
+                        id={"type": "val-calibration-max", "field": "road"},
+                    ),
+                ]
+            )
+        ),
+    ],
+    className="mb-4",
+)
+
+rows_3 = []
+
+rows_3.append(subrow_1_diffusion)
+rows_3.append(subrow_2_diffusion)
+
+rows_3.append(subrow_1_breed)
+rows_3.append(subrow_2_breed)
+
+rows_3.append(subrow_1_spread)
+rows_3.append(subrow_2_spread)
+
+rows_3.append(subrow_1_slope)
+rows_3.append(subrow_2_slope)
+
+rows_3.append(subrow_1_road)
+rows_3.append(subrow_2_road)
+
 
 subtab_3 = dbc.Card(dbc.CardBody(rows_3))
 
-
 # Simulación
 submit_button = html.Div(
-    [dbc.Button("Ejecutar calibración", id="btn-calibrate", n_clicks=0)],
+    [dbc.Button(id="btn-calibrate", n_clicks=0)],
     className="mt-2 text-center",
 )
 
@@ -444,13 +1524,13 @@ for field in sl.FIELDS:
 
 calibration_summary = html.Div(
     [
-        html.H4("Parámetros", className="mt-2"),
+        html.H4(html.Span(id="simulacion-text1"), className="mt-2"),
         html.Div(
             html.Ul(
                 [
                     html.Li(
                         [
-                            html.Span(html.B("Años de calibración: ")),
+                            html.Span(html.B(id = "simulacion-text2")),
                             html.Span(
                                 id={"type": "result-calibration", "field": "start-year"}
                             ),
@@ -462,7 +1542,7 @@ calibration_summary = html.Div(
                     ),
                     html.Li(
                         [
-                            html.Span(html.B("Iteraciones de Monte Carlo: ")),
+                            html.Span(html.B(id = "simulacion-text3")),
                             html.Span(
                                 id={"type": "result-calibration", "field": "n-iters"}
                             ),
@@ -470,7 +1550,7 @@ calibration_summary = html.Div(
                     ),
                     html.Li(
                         [
-                            html.Span(html.B("Semilla del PRNG: ")),
+                            html.Span(html.B(id = "simulacion-text4")),
                             html.Span(
                                 id={
                                     "type": "result-calibration",
@@ -481,7 +1561,7 @@ calibration_summary = html.Div(
                     ),
                     html.Li(
                         [
-                            html.Span(html.B("Etapas de refinamiento: ")),
+                            html.Span(html.B(id = "simulacion-text5")),
                             html.Span(
                                 id={
                                     "type": "result-calibration",
@@ -492,7 +1572,7 @@ calibration_summary = html.Div(
                     ),
                     html.Li(
                         [
-                            html.Span(html.B("Divisiones de refinamiento: ")),
+                            html.Span(html.B(id = "simulacion-text6")),
                             html.Span(
                                 id={
                                     "type": "result-calibration",
@@ -503,7 +1583,7 @@ calibration_summary = html.Div(
                     ),
                     html.Li(
                         [
-                            html.Span(html.B("Ganadores de refinamiento: ")),
+                            html.Span(html.B(id = "simulacion-text7")),
                             html.Span(
                                 id={
                                     "type": "result-calibration",
@@ -514,7 +1594,7 @@ calibration_summary = html.Div(
                     ),
                     html.Li(
                         [
-                            html.Span(html.B("Límite crítico: ")),
+                            html.Span(html.B(id = "simulacion-text8")),
                             html.Span(
                                 id={
                                     "type": "result-calibration",
@@ -526,11 +1606,11 @@ calibration_summary = html.Div(
                 ]
             ),
         ),
-        html.H4("Espacio de búsqueda", className="mt-2"),
+        html.H4(html.Span(id="simulacion-text9"), className="mt-2"),
         html.Div(
             html.Ul(span_list),
         ),
-        html.H4("Rasters personalizados", className="mt-2"),
+        html.H4(html.Span(id="simulacion-text10"), className="mt-2"),
         html.Div(
             html.Ul(
                 [
@@ -553,12 +1633,13 @@ calibration_summary = html.Div(
 subtab_5 = dbc.Card(
     dbc.CardBody(
         [
-            html.H3("Resumen"),
+            html.H3(html.Span(id="simulacion-text11")),
             calibration_summary,
             submit_button,
         ]
     )
 )
+
 
 subtab_6 = dbc.Card(dbc.CardBody([html.Div(id="div-calibration-results")]))
 
@@ -589,17 +1670,16 @@ subtab_2_1 = dbc.Card(
     dbc.CardBody(
         dbc.Container(
             [
-                dbc.Row(dbc.Col(html.H4("Fechas"))),
+                dbc.Row(dbc.Col(html.H4(html.Span(id = "prediccion-text1")))),
                 dbc.Row(
                     [
                         dbc.Col(
                             dbc.InputGroup(
                                 [
                                     dbc.InputGroupText(
-                                        sl.help_text(
-                                            "Año inicial",
-                                            "Año a partir del cual realizar la predicción.",
-                                        )
+                                        sl.help_text_translation("prediccion-text2",
+                                             translations2["prediccion-text3"]["es"],
+                                             "prediccion-text3")
                                     ),
                                     dbc.Select(
                                         required=True,
@@ -615,10 +1695,9 @@ subtab_2_1 = dbc.Card(
                             dbc.InputGroup(
                                 [
                                     dbc.InputGroupText(
-                                        sl.help_text(
-                                            "Número de años",
-                                            "Número de años hacia el futuro para los cuales hacer la predicción.",
-                                        )
+                                        sl.help_text_translation("prediccion-text4",
+                                             translations2["prediccion-text5"]["es"],
+                                             "prediccion-text5")
                                     ),
                                     dbc.Input(
                                         type="number",
@@ -638,17 +1717,16 @@ subtab_2_1 = dbc.Card(
                     ],
                     className="mb-4",
                 ),
-                dbc.Row(dbc.Col(html.H4("Monte Carlo"))),
+                dbc.Row(dbc.Col(html.Span(id = "prediccion-text6"))),
                 dbc.Row(
                     [
                         dbc.Col(
                             dbc.InputGroup(
                                 [
                                     dbc.InputGroupText(
-                                        sl.help_text(
-                                            "Iteraciones",
-                                            "Número de iteraciones de Monte Carlo.",
-                                        )
+                                        sl.help_text_translation("prediccion-text7",
+                                             translations2["prediccion-text8"]["es"],
+                                             "prediccion-text8")
                                     ),
                                     dbc.Input(
                                         type="number",
@@ -669,10 +1747,9 @@ subtab_2_1 = dbc.Card(
                             dbc.InputGroup(
                                 [
                                     dbc.InputGroupText(
-                                        sl.help_text(
-                                            "Semilla",
-                                            "Semilla para el generador de números aleatorios. La misma semilla producirá los mismos resultados cada vez.",
-                                        )
+                                        sl.help_text_translation("prediccion-text9",
+                                             translations2["prediccion-text10"]["es"],
+                                             "prediccion-text10")
                                     ),
                                     dbc.Input(
                                         type="number",
@@ -691,16 +1768,15 @@ subtab_2_1 = dbc.Card(
                     ],
                     className="mb-4",
                 ),
-                dbc.Row(dbc.Col(html.H4("Misceláneo"))),
+                dbc.Row(dbc.Col(html.H4(html.Span(id = "prediccion-text11")))),
                 dbc.Row(
                     dbc.Col(
                         dbc.InputGroup(
                             [
                                 dbc.InputGroupText(
-                                    sl.help_text(
-                                        "Límite crítico",
-                                        "Límite crítico de pendientes.",
-                                    )
+                                    sl.help_text_translation("prediccion-text12",
+                                             translations2["prediccion-text13"]["es"],
+                                             "prediccion-text13")
                                 ),
                                 dbc.Input(
                                     type="number",
@@ -728,11 +1804,11 @@ subtab_2_2 = dbc.Card(
     dbc.CardBody(
         dbc.Container(
             [
-                dbc.Row(dbc.Col(html.H4("Escenario 1"))),
+                dbc.Row(dbc.Col(html.H4(html.Span(id = "prediccion-text14")))),
                 dbc.Row(className="mb-2", id="sleuth-row-orig"),
-                dbc.Row(dbc.Col(html.H4("Escenario 2"))),
+                dbc.Row(dbc.Col(html.H4(html.Span(id = "prediccion-text15")))),
                 dbc.Row(className="mb-2", id="sleuth-row-accel"),
-                dbc.Row(dbc.Col(html.H4("Escenario 3"))),
+                dbc.Row(dbc.Col(html.H4(html.Span(id = "prediccion-text16")))),
                 dbc.Row(className="mb-2", id="sleuth-row-deccel"),
                 dbc.Row(dbc.Col(html.Hr())),
                 dbc.Row(
@@ -751,15 +1827,15 @@ subtab_2_2 = dbc.Card(
 subtab_2_3 = dbc.Card(
     dbc.CardBody(
         [
-            html.H3("Resumen"),
+            html.H3(html.Span(id = "prediccion-text17")),
             html.Div(
                 [
-                    html.H4("Parámetros"),
+                    html.H4(html.Span(id = "prediccion-text18")),
                     html.Ul(
                         [
                             html.Li(
                                 [
-                                    html.Span(html.B("Año inicial: ")),
+                                    html.Span(html.B(html.Span(id = "prediccion-text19"))),
                                     html.Span(
                                         id={
                                             "type": "result-prediction",
@@ -770,7 +1846,7 @@ subtab_2_3 = dbc.Card(
                             ),
                             html.Li(
                                 [
-                                    html.Span(html.B("Número de años: ")),
+                                    html.Span(html.B(html.Span(id = "prediccion-text20"))),
                                     html.Span(
                                         id={
                                             "type": "result-prediction",
@@ -781,7 +1857,7 @@ subtab_2_3 = dbc.Card(
                             ),
                             html.Li(
                                 [
-                                    html.Span(html.B("Iteraciones de Monte Carlo: ")),
+                                    html.Span(html.B(html.Span(id = "prediccion-text21"))),
                                     html.Span(
                                         id={
                                             "type": "result-prediction",
@@ -792,7 +1868,7 @@ subtab_2_3 = dbc.Card(
                             ),
                             html.Li(
                                 [
-                                    html.Span(html.B("Semilla del PRNG: ")),
+                                    html.Span(html.B(html.Span(id = "prediccion-text22"))),
                                     html.Span(
                                         id={
                                             "type": "result-prediction",
@@ -803,7 +1879,7 @@ subtab_2_3 = dbc.Card(
                             ),
                             html.Li(
                                 [
-                                    html.Span(html.B("Límite crítico: ")),
+                                    html.Span(html.B(html.Span(id = "prediccion-text23"))),
                                     html.Span(
                                         id={
                                             "type": "result-prediction",
@@ -818,16 +1894,14 @@ subtab_2_3 = dbc.Card(
             ),
             html.Div(
                 [
-                    html.H4("Coeficientes"),
-                    html.Span(
-                        "(Un asterisco indica que el coeficiente fue modificado)"
-                    ),
+                    html.H4(html.Span(id = "prediccion-text24")),
+                    html.Span(id = "prediccion-text25"),
                     html.Div(id="div-result-prediction-coefficients"),
                 ]
             ),
             html.Div(
                 [
-                    html.H4("Rasters personalizados"),
+                    html.H4(html.Span(id = "prediccion-text26")),
                     html.Ul(
                         [
                             html.Li(
@@ -919,6 +1993,16 @@ all_stores = (
     ]
 )
 
+# Traducciones
+language_buttons = dbc.ButtonGroup(
+    [
+        dbc.Button("Español", id="btn-lang-es", n_clicks=0),
+        dbc.Button("English", id="btn-lang-en", n_clicks=0),
+        dbc.Button("Portuguese", id="btn-lang-pt", n_clicks=0),
+    ],
+    style={"position": "absolute", "top": "10px", "right": "10px", "z-index": "1"},
+)
+
 layout = html.Div(
     alerts
     + all_stores
@@ -930,6 +2014,46 @@ layout = html.Div(
     ]
 )
 
+layout = html.Div(
+    [language_buttons, layout],
+    style={"position": "relative"}
+)
+
+@callback(
+    [Output(key, 'children') for key in translations.keys()],
+    [Input('btn-lang-es', 'n_clicks'),
+     Input('btn-lang-en', 'n_clicks'),
+     Input('btn-lang-pt', 'n_clicks')]
+)
+def update_translated_content(btn_lang_es, btn_lang_en, btn_lang_pt):
+    ctx = dash.callback_context
+
+    if not ctx.triggered:
+        language = 'es'  # Predeterminado
+    else:
+        button_id = ctx.triggered[0]['prop_id'].split('.')[0]
+        language = 'es' if button_id == 'btn-lang-es' else 'en' if button_id == 'btn-lang-en' else 'pt'
+
+    return [translations[key][language] for key in translations.keys()]
+
+@callback(
+    [Output(key, "title") for key in translations2.keys()],
+    [Input('btn-lang-es', 'n_clicks'),
+     Input('btn-lang-en', 'n_clicks'),
+     Input('btn-lang-pt', 'n_clicks')]
+)
+def update_translated_content2(btn_lang_es, btn_lang_en, btn_lang_pt):
+    ctx = dash.callback_context
+
+    if not ctx.triggered:
+        language = 'es'  # Predeterminado
+    else:
+        button_id = ctx.triggered[0]['prop_id'].split('.')[0]
+        language = 'es' if button_id == 'btn-lang-es' else 'en' if button_id == 'btn-lang-en' else 'pt'
+
+    return [translations2[key][language] for key in translations2.keys()]
+
+# ---
 
 # ==================== Callbacks ====================#
 
