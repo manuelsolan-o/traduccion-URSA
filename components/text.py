@@ -58,7 +58,26 @@ def figureWithDescription_translation(fig, text_id, title_id):
         style=BLOCK_STYLE,
     )
 
+def figureWithDescription_translation2(fig, description, title_id):
+    info_id = f"{title_id}-info"
+    tooltip = dbc.Tooltip(description, target=info_id, placement="top")
+    info_button = html.I(id=info_id, className="bi bi-info-circle text-info")
+    title_element = html.H4(id=title_id)
 
+    return dbc.Container(
+        [
+            dbc.Row(
+                [
+                    dbc.Col([info_button, tooltip], width=2),
+                    dbc.Col(title_element, width=10),
+                ],
+                className="p-2 d-flex justify-content-center align-items-center",
+            ),
+            html.Hr(className="mt-2 mb-2"),
+            fig,
+        ],
+        style=BLOCK_STYLE,
+    )
 
 def mapComponent(title, id):
     return html.Div(
